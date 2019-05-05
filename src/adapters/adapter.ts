@@ -5,11 +5,11 @@ export type retrieveMangaChapters = (manga: Manga) => Promise<Chapter[]>
 export type retrieveChapterPages = (chapter: Chapter) => Promise<Page[]>
 
 export interface Adapter {
-  hostnames: string[];
+  hostnames: string[]
   retrieve: {
-    info: retrieveMangaInfo;
-    chapters: retrieveMangaChapters;
-    chapterPages: retrieveChapterPages;
-  };
-  end: () => Promise<void>;
+    info: retrieveMangaInfo
+    chapters: retrieveMangaChapters
+    chapterPages: retrieveChapterPages
+  }
+  end: () => Promise<void>
 }

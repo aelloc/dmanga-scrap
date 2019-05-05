@@ -7,9 +7,11 @@ export const adapters: { [key: string]: Adapter } = {
   mangaHost
 }
 
-export function match (uri: string): Adapter {
+export function match(uri: string): Adapter {
   const url = new URL(uri)
-  const host = Object.values(adapters).find(({ hostnames }): boolean => hostnames.includes(url.hostname))
+  const host = Object.values(adapters).find(
+    ({ hostnames }): boolean => hostnames.includes(url.hostname)
+  )
 
   return host
 }
