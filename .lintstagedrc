@@ -1,0 +1,9 @@
+{
+  "linters": {
+    "**/*.ts": [
+      "npm run lint:command",
+      "npm run format:command",
+      "git add"
+    ]
+  }
+}
