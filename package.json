@@ -1,0 +1,15 @@
+{
+  "name": "dmanga-scrap",
+  "version": "0.1.0-beta",
+  "description": "Extract manga data from most popular manga hosts",
+  "keywords": [],
+  "homepage": "https://github.com/aelloc/dmanga-scrap#readme",
+  "license": "MIT",
+  "author": "Ælloc <aelloc@singlebit.org>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aelloc/dmanga-scrap"
+  },
+  "scripts": {
+  }
+}
