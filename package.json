@@ -2,7 +2,11 @@
   "name": "dmanga-scrap",
   "version": "0.1.0-beta",
   "description": "Extract manga data from most popular manga hosts",
-  "keywords": ["manga", "manga-downloader", "manga-scraper"],
+  "keywords": [
+    "manga",
+    "manga-downloader",
+    "manga-scraper"
+  ],
   "homepage": "https://github.com/aelloc/dmanga-scrap#readme",
   "license": "MIT",
   "author": "Ælloc <aelloc@singlebit.org>",
@@ -12,13 +16,22 @@
   },
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc --project ./tsconfig.json"
+    "build": "tsc --project ./tsconfig.json",
+    "lint": "eslint --fix --color src/**/*.ts"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^1.7.0",
     "puppeteer": "^1.15.0"
   },
   "devDependencies": {
     "@types/puppeteer": "^1.12.4",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "typescript": "^3.4.5"
   }
 }
