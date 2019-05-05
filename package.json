@@ -11,5 +11,10 @@
     "url": "https://github.com/aelloc/dmanga-scrap"
   },
   "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc --project ./tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.5"
   }
 }
