@@ -14,7 +14,11 @@
     "start": "node dist/index.js",
     "build": "tsc --project ./tsconfig.json"
   },
+  "dependencies": {
+    "puppeteer": "^1.15.0"
+  },
   "devDependencies": {
+    "@types/puppeteer": "^1.12.4",
     "typescript": "^3.4.5"
   }
 }
