@@ -1,22 +1,29 @@
 {
+    "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
     "env": {
         "es6": true,
         "node": true
     },
     "extends": [
         "plugin:@typescript-eslint/recommended", 
-        "standard"
+        "prettier",
+        "prettier/@typescript-eslint"
     ],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
     "rules": {
-        "@typescript-eslint/indent": ["error", 2]
+        "@typescript-eslint/indent": ["error", 2],
+        "@typescript-eslint/no-explicit-any": "off",
+        "prettier/prettier": "error"
     }
 }

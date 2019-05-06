@@ -18,9 +18,7 @@
     "start": "node dist/index.js",
     "build": "tsc --project tsconfig.json",
     "lint:command": "eslint --fix --color",
-    "lint": "npm run lint:command src/**/*.ts",
-    "format:command": "prettier --config .prettierrc.json --write",
-    "format": "npm run format:command src/**/*.ts"
+    "lint": "npm run lint:command src/**/*.ts"
   },
   "dependencies": {
     "@typescript-eslint/parser": "^1.7.0",
@@ -30,11 +28,11 @@
     "@types/puppeteer": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "eslint": "^5.16.0",
-    "eslint-config-standard": "^12.0.0",
+    "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
     "husky": "^2.2.0",
     "lint-staged": "^8.1.6",
     "prettier": "1.17.0",
