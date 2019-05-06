@@ -57,7 +57,37 @@ async function retrieveChapters(manga: Manga): Promise<Chapter[]> {
 const hostnames = ['mangahost.net', 'mangahosted.com']
 
 async function retrieveMangaInfo(manga: Manga): Promise<MangaInfo> {
-  return null
+  function selectInfo(): MangaInfo {
+    function getDescription(key: string, description: any[]): Element {
+      return description.find(
+        (item): boolean => {
+          const { textContent: name } = item.querySelector('strong')
+          return name === key
+        }
+      )
+    }
+    const { textContent: name = '' } =
+      document.querySelector('.title-widget h1.entry-title') || {}
+    const description = Array.from(
+      document.querySelectorAll('ul.descricao > li')
+    )
+    const { textContent: author = '' } =
+      getDescription('Autor: ', description) || {}
+    const { textContent: releaseYear = '' } =
+      getDescription('Ano: ', description) || {}
+
+    const year = Number.parseInt(releaseYear, 10)
+    const release = new Date(year, 0)
+    return {
+      name,
+      author,
+      release
+    }
+  }
+
+  const info = await evaluate(manga.url.href, selectInfo)
+
+  return info as MangaInfo
 }
 
 export default {
