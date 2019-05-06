@@ -7,9 +7,7 @@ async function retrieveChapterPages(chapter: Chapter): Promise<Page[]> {
     const elements = document.querySelectorAll('a.read-slide')
     const pages = Array.from(elements).map(
       (elem): Page => {
-        const { value: dataReadHash } = elem.attributes.getNamedItem(
-          'data-read-hash'
-        )
+        const { value: dataReadHash } = elem.attributes.getNamedItem('data-read-hash')
         const img = elem.querySelector('img')
         const { value: src } = img.attributes.getNamedItem('src')
 
@@ -66,15 +64,10 @@ async function retrieveMangaInfo(manga: Manga): Promise<MangaInfo> {
         }
       )
     }
-    const { textContent: name = '' } =
-      document.querySelector('.title-widget h1.entry-title') || {}
-    const description = Array.from(
-      document.querySelectorAll('ul.descricao > li')
-    )
-    const { textContent: author = '' } =
-      getDescription('Autor: ', description) || {}
-    const { textContent: releaseYear = '' } =
-      getDescription('Ano: ', description) || {}
+    const { textContent: name = '' } = document.querySelector('.title-widget h1.entry-title') || {}
+    const description = Array.from(document.querySelectorAll('ul.descricao > li'))
+    const { textContent: author = '' } = getDescription('Autor: ', description) || {}
+    const { textContent: releaseYear = '' } = getDescription('Ano: ', description) || {}
 
     const year = Number.parseInt(releaseYear, 10)
     const release = new Date(year, 0)
