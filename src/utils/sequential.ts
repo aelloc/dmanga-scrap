@@ -19,7 +19,6 @@ export async function sequential<T>(
   return sequential(operation, pending, resolved)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function wrapInObject<T, K>(
   operation: (value: T) => Promise<any>,
   key: string,
