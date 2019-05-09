@@ -8,6 +8,9 @@
     "manga-scraper"
   ],
   "homepage": "https://github.com/aelloc/dmanga-scrap#readme",
+  "bugs": {
+    "url": "https://github.com/aelloc/dmanga-scrap/issues"
+  },
   "license": "MIT",
   "author": "Ælloc <aelloc@singlebit.org>",
   "repository": {
