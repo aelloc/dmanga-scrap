@@ -13,12 +13,13 @@
   },
   "license": "MIT",
   "author": "Ælloc <aelloc@singlebit.org>",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/aelloc/dmanga-scrap"
   },
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node lib/index.js",
     "build": "tsc --project tsconfig.json",
     "lint:command": "eslint --fix --color",
     "lint": "npm run lint:command src/**/*.ts"
