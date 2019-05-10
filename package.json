@@ -25,9 +25,11 @@
     "lint": "npm run lint:command src/**/*.ts"
   },
   "dependencies": {
+    "jsdom": "^15.0.0",
     "puppeteer": "^1.15.0"
   },
   "devDependencies": {
+    "@types/jsdom": "^12.2.3",
     "@types/puppeteer": "^1.12.4",
     "@typescript-eslint/eslint-plugin": "^1.7.0",
     "@typescript-eslint/parser": "^1.7.0",
