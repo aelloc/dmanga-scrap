@@ -57,6 +57,7 @@ const hostnames = ['mangahost.net', 'mangahosted.com']
 async function retrieveMangaInfo(manga: Manga): Promise<MangaInfo> {
   const jsdom = await create(manga.url.href)
   await addEventListener(jsdom.window, 'load')
+  const document = jsdom.window.document
 
   function getDescription(key: string, description: any[]): Element {
     return description.find(
