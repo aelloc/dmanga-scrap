@@ -1,27 +1,28 @@
 import { URL } from 'url'
 import { evaluate, close } from '../utils/browser'
+import { addEventListener, create, destroy } from '../utils/jsdom'
 import { Manga, Chapter, Page, MangaInfo } from '../manga'
 
 async function retrieveChapterPages(chapter: Chapter): Promise<Page[]> {
-  function selectPages(): Page[] {
-    const elements = document.querySelectorAll('a.read-slide')
-    const pages = Array.from(elements).map(
-      (elem): Page => {
-        const { value: dataReadHash } = elem.attributes.getNamedItem('data-read-hash')
-        const img = elem.querySelector('img')
-        const { value: src } = img.attributes.getNamedItem('src')
+  const jsdom = await create(chapter.url.href)
+  await addEventListener(jsdom.window, 'load')
 
-        return {
-          number: parseInt(dataReadHash),
-          src
-        }
+  const document = jsdom.window.document
+  const elements = document.querySelectorAll('a.read-slide')
+  const pages = Array.from(elements).map(
+    (elem): Page => {
+      const { value: dataReadHash } = elem.attributes.getNamedItem('data-read-hash')
+      const img = elem.querySelector('img')
+      const { value: src } = img.attributes.getNamedItem('src')
+
+      return {
+        number: Number.parseInt(dataReadHash, 10),
+        src
       }
-    )
+    }
+  )
 
-    return pages
-  }
-
-  const pages = await evaluate(chapter.url.href, selectPages)
+  destroy(jsdom)
 
   return pages
 }
