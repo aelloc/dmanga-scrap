@@ -21,7 +21,7 @@ async function retrieveChapterPages(chapter: Chapter): Promise<Page[]> {
     }
   )
 
-  destroy(jsdom)
+  await destroy(jsdom)
 
   return pages
 }
@@ -47,7 +47,7 @@ async function retrieveChapters(manga: Manga): Promise<Chapter[]> {
     }
   )
 
-  destroy(jsdom)
+  await destroy(jsdom)
 
   return chapters
 }
@@ -79,6 +79,8 @@ async function retrieveMangaInfo(manga: Manga): Promise<MangaInfo> {
     author,
     release
   }
+
+  await destroy(jsdom)
 
   return info as MangaInfo
 }
