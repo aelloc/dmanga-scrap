@@ -1,10 +1,11 @@
-import { JSDOM, DOMWindow, Options } from 'jsdom'
+import { JSDOM, DOMWindow, Options, VirtualConsole } from 'jsdom'
 
 export async function create(url: string, options?: Options): Promise<JSDOM> {
   const defaultOptions = {
     runScripts: 'dangerously',
     resources: 'usable',
-    pretendToBeVisual: true
+    pretendToBeVisual: true,
+    virtualConsole: new VirtualConsole()
   }
 
   const opts = Object.assign({}, defaultOptions, options)
