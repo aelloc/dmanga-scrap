@@ -1,5 +1,4 @@
 import { URL } from 'url'
-import { evaluate, close } from '../utils/browser'
 import { addEventListener, create, destroy } from '../utils/jsdom'
 import { Manga, Chapter, Page, MangaInfo } from '../manga'
 
@@ -90,5 +89,5 @@ export default {
     chapters: retrieveChapters,
     chapterPages: retrieveChapterPages
   },
-  end: close
+  end: () => Promise.resolve()
 }
