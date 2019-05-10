@@ -28,16 +28,14 @@ async function retrieveChapterPages(chapter: Chapter): Promise<Page[]> {
 }
 
 async function retrieveChapters(manga: Manga): Promise<Chapter[]> {
-  function selectChapters(): string[] {
-    const elements = document.querySelectorAll('ul.list_chapters > li > a')
-    const chapters = Array.from(elements)
-      .reverse()
-      .map((elem): string => elem.textContent)
+  const jsdom = await create(manga.url.href)
+  await addEventListener(jsdom.window, 'load')
 
-    return chapters
-  }
-
-  const names = await evaluate(manga.url.href, selectChapters)
+  const document = jsdom.window.document
+  const elements = document.querySelectorAll('ul.list_chapters > li > a')
+  const names = Array.from(elements)
+    .reverse()
+    .map((elem): string => elem.textContent)
   const chapters = names.map(
     (name): Chapter => {
       const { pathname } = new URL(name, manga.url.href)
@@ -49,6 +47,8 @@ async function retrieveChapters(manga: Manga): Promise<Chapter[]> {
       }
     }
   )
+
+  destroy(jsdom)
 
   return chapters
 }
