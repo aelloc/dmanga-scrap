@@ -16,11 +16,10 @@ export function retrieve(uri: string) {
 }
 
 async function main() {
-  const targetDir = '~/Downloads/one-punch-man'
   const url = 'https://mangahosted.com/manga/one-punch-man-mh39222'
 
   const manga = await retrieve(url)
-  console.log(manga, targetDir)
+  console.log(manga)
 }
 
 main().catch(console.error.bind(console))
