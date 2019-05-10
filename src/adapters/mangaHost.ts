@@ -56,30 +56,29 @@ async function retrieveChapters(manga: Manga): Promise<Chapter[]> {
 const hostnames = ['mangahost.net', 'mangahosted.com']
 
 async function retrieveMangaInfo(manga: Manga): Promise<MangaInfo> {
-  function selectInfo(): MangaInfo {
-    function getDescription(key: string, description: any[]): Element {
-      return description.find(
-        (item): boolean => {
-          const { textContent: name } = item.querySelector('strong')
-          return name === key
-        }
-      )
-    }
-    const { textContent: name = '' } = document.querySelector('.title-widget h1.entry-title') || {}
-    const description = Array.from(document.querySelectorAll('ul.descricao > li'))
-    const { textContent: author = '' } = getDescription('Autor: ', description) || {}
-    const { textContent: releaseYear = '' } = getDescription('Ano: ', description) || {}
+  const jsdom = await create(manga.url.href)
+  await addEventListener(jsdom.window, 'load')
 
-    const year = Number.parseInt(releaseYear, 10)
-    const release = new Date(year, 0)
-    return {
-      name,
-      author,
-      release
-    }
+  function getDescription(key: string, description: any[]): Element {
+    return description.find(
+      (item): boolean => {
+        const { textContent: name } = item.querySelector('strong')
+        return name === key
+      }
+    )
   }
+  const { textContent: name = '' } = document.querySelector('.title-widget h1.entry-title') || {}
+  const description = Array.from(document.querySelectorAll('ul.descricao > li'))
+  const { textContent: author = '' } = getDescription('Autor: ', description) || {}
+  const { textContent: releaseYear = '' } = getDescription('Ano: ', description) || {}
 
-  const info = await evaluate(manga.url.href, selectInfo)
+  const year = Number.parseInt(releaseYear, 10)
+  const release = new Date(year, 0)
+  const info = {
+    name,
+    author,
+    release
+  }
 
   return info as MangaInfo
 }
