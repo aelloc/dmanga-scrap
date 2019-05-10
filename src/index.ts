@@ -2,19 +2,20 @@ import { match as matchHost } from './adapters'
 import { normalize } from './utils/url'
 import * as Host from './host'
 
-export function match (uri: string) {
+export function match(uri: string) {
   const url = normalize(uri)
 
   return matchHost(url)
 }
 
-export function retrieve (uri: string) {
-  const adapter = match(uri)
-  
-  return Host.retrieve(uri, adapter)
+export function retrieve(uri: string) {
+  const url = normalize(uri)
+  const adapter = match(url)
+
+  return Host.retrieve(url, adapter)
 }
 
-async function main () {
+async function main() {
   const targetDir = '~/Downloads/one-punch-man'
   const url = 'https://mangahosted.com/manga/one-punch-man-mh39222'
 
@@ -22,5 +23,4 @@ async function main () {
   console.log(manga, targetDir)
 }
 
-main()
-  .catch(console.error.bind(console))
+main().catch(console.error.bind(console))
