@@ -1,7 +1,10 @@
-export function normalize(url: string): string {
-  if (url.lastIndexOf('/') === url.length - 1) {
-    return url
+import { URL } from 'url'
+
+export function normalize(href: string): string {
+  const url = new URL(href)
+  if (url.pathname.lastIndexOf('/') === -1) {
+    url.pathname += '/'
   }
 
-  return url + '/'
+  return url.href
 }
