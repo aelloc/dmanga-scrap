@@ -13,7 +13,7 @@ export async function create(url: string, options?: Options): Promise<JSDOM> {
 }
 
 export async function addEventListener(
-  instance: DOMWindow | Document | Element,
+  instance: EventTarget,
   event: string,
   options?: boolean | AddEventListenerOptions
 ): Promise<void> {
