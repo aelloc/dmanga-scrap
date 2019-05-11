@@ -2,8 +2,12 @@
   "extension": [
     ".ts"
   ],
+  "include": [
+    "src/**/*.ts"
+  ],
   "exclude": [
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "**/*.spec.ts"
   ],
   "all": true
 }
