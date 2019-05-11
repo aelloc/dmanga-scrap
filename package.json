@@ -23,7 +23,8 @@
     "build": "tsc --project tsconfig.json",
     "lint:command": "eslint --fix --color",
     "lint": "npm run lint:command src/**/*.ts",
-    "test": "ava"
+    "test": "ava",
+    "coverage": "nyc npm run test"
   },
   "dependencies": {
     "jsdom": "^15.0.0"
@@ -42,7 +43,9 @@
     "eslint-plugin-promise": "^4.1.1",
     "husky": "^2.2.0",
     "lint-staged": "^8.1.6",
+    "nyc": "^14.1.1",
     "prettier": "1.17.0",
+    "source-map-support": "^0.5.12",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   }
