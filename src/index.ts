@@ -2,14 +2,14 @@ import { match as matchHost } from './adapters'
 import { normalize } from './utils/url'
 import * as Host from './host'
 
-export function match(uri: string) {
-  const url = normalize(uri)
+export function match(href: string) {
+  const url = normalize(href)
 
   return matchHost(url)
 }
 
-export function retrieve(uri: string) {
-  const url = normalize(uri)
+export function retrieve(href: string) {
+  const url = normalize(href)
   const adapter = match(url)
 
   return Host.retrieve(url, adapter)
