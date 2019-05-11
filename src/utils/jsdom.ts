@@ -1,4 +1,4 @@
-import { JSDOM, DOMWindow, Options, VirtualConsole } from 'jsdom'
+import { JSDOM, Options, VirtualConsole } from 'jsdom'
 
 export async function create(url: string, options?: Options): Promise<JSDOM> {
   const defaultOptions = {

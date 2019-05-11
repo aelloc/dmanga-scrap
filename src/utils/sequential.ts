@@ -19,14 +19,14 @@ export async function sequential<T>(
   return sequential(operation, pending, resolved)
 }
 
-export async function wrapInObject<T, K>(
+export async function wrapInObject<T>(
   operation: (value: T) => Promise<any>,
   key: string,
   value: T
-): Promise<T> {
+): Promise<{ [key: string]: T }> {
   const wrapped = {
     [key]: await operation(value)
   }
 
-  return wrapped as T
+  return wrapped
 }
