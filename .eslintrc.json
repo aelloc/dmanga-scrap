@@ -6,7 +6,8 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "prettier"
+        "prettier",
+        "ava"
     ],
     "env": {
         "es6": true,
@@ -15,7 +16,8 @@
     "extends": [
         "plugin:@typescript-eslint/recommended", 
         "prettier",
-        "prettier/@typescript-eslint"
+        "prettier/@typescript-eslint",
+        "plugin:ava/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
