@@ -18,7 +18,12 @@ export async function addEventListener(
   options?: boolean | AddEventListenerOptions
 ): Promise<void> {
   return new Promise((resolve) => {
-    instance.addEventListener(event, (...args: any[]) => resolve(...args), options)
+    const handler = (...args: any[]) => {
+      instance.removeEventListener(event, handler, options)
+      resolve(...args)
+    }
+
+    instance.addEventListener(event, handler, options)
   })
 }
 
